@@ -20,7 +20,8 @@ namespace DVLD_DataAccess
             string Query = "INSERT INTO People (  [NationalNo], [FirstName], [SecondName], [ThirdName], " +
                 "[LastName], [DateOfBirth], [Gendor], [Address], [Phone], [Email], [NationalityCountryID]," +
                 " [ImagePath]) VALUES (@NationalNo, @FirstName, @SecondName, @ThirdName, @LastName," +
-                " @DateOfBirth, @Gendor, @Address, @Phone, @Email, @NationalityCountryID, @ImagePath);";
+                " @DateOfBirth, @Gendor, @Address, @Phone, @Email, @NationalityCountryID, @ImagePath);" +
+                "SELECT SCOPE_IDENTITY();";
 
             SqlCommand command = new SqlCommand(Query, connection);
             command.Parameters.AddWithValue("@NationalNo", NationalNo);
