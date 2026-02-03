@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace DVLD_DataAccess
 {
-    internal class clsPersonData
+    public class clsPersonData
     {
         public static int AddNewPerson(ref string FirstName, ref string SecondName,
             ref string ThirdName, ref string LastName, ref string NationalNo, ref DateTime DateOfBirth,
-            ref short Gendor, ref string Address, ref string Phone, ref string Email,
+            ref short Gender, ref string Address, ref string Phone, ref string Email,
             ref int NationalityCountryID, ref string ImagePath)
         {
 
@@ -37,7 +37,7 @@ namespace DVLD_DataAccess
             command.Parameters.AddWithValue("@ThirdName", ThirdName);
             command.Parameters.AddWithValue("@LastName", LastName);
             command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
-            command.Parameters.AddWithValue("@Gendor", Gendor);
+            command.Parameters.AddWithValue("@Gendor", Gender);
             command.Parameters.AddWithValue("@Address", Address);
             command.Parameters.AddWithValue("@Phone", Phone);
             command.Parameters.AddWithValue("@Email", Email);
@@ -78,7 +78,7 @@ namespace DVLD_DataAccess
 
         public static bool FindPersonByPersonID(int PersonID, ref string NationalNo, ref string FirstName, ref string SecondName,
             ref string ThirdName, ref string LastName, ref DateTime DateOfBirth,
-            ref short Gendor, ref string Address, ref string Phone, ref string Email,
+            ref short Gender, ref string Address, ref string Phone, ref string Email,
             ref int NationalityCountryID, ref string ImagePath)
         {
             bool IsFound = false;
@@ -105,7 +105,7 @@ namespace DVLD_DataAccess
                     ThirdName = reader["ThirdName"].ToString();
                     LastName = reader["LastName"].ToString();
                     DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
-                    Gendor = Convert.ToInt16(reader["Gendor"]);
+                    Gender = Convert.ToInt16(reader["Gendor"]);
                     Address = reader["Address"].ToString();
                     Phone = reader["Phone"].ToString();
                     Email = reader["Email"].ToString();
@@ -139,7 +139,7 @@ namespace DVLD_DataAccess
 
         public static bool FindPersonByNationalNo(string NationalNo, ref int PersonID, ref string FirstName, ref string SecondName,
             ref string ThirdName, ref string LastName, ref DateTime DateOfBirth,
-            ref short Gendor, ref string Address, ref string Phone, ref string Email,
+            ref short Gender, ref string Address, ref string Phone, ref string Email,
             ref int NationalityCountryID, ref string ImagePath)
         {
             bool IsFound = false;
@@ -165,7 +165,7 @@ namespace DVLD_DataAccess
                     ThirdName = reader["ThirdName"].ToString();
                     LastName = reader["LastName"].ToString();
                     DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
-                    Gendor = Convert.ToInt16(reader["Gendor"]);
+                    Gender = Convert.ToInt16(reader["Gendor"]);
                     Address = reader["Address"].ToString();
                     Phone = reader["Phone"].ToString();
                     Email = reader["Email"].ToString();
@@ -269,7 +269,7 @@ namespace DVLD_DataAccess
 
         public static bool UpdatePerson(int PersonID, string NationalNo, string FirstName, string SecondName,
             string ThirdName, string LastName, DateTime DateOfBirth,
-            short Gendor, string Address, string Phone, string Email,
+            short Gender, string Address, string Phone, string Email,
             int NationalityCountryID, string ImagePath)
         {
             int NumberOfEffectedRows =0;
@@ -290,7 +290,7 @@ namespace DVLD_DataAccess
             Command.Parameters.AddWithValue("@ThirdName", ThirdName);
             Command.Parameters.AddWithValue("@LastName", LastName);
             Command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
-            Command.Parameters.AddWithValue("@Gendor", Gendor);
+            Command.Parameters.AddWithValue("@Gendor", Gender);
             Command.Parameters.AddWithValue("@Address", Address);
             Command.Parameters.AddWithValue("@Phone", Phone);
             Command.Parameters.AddWithValue("@Email", Email);
