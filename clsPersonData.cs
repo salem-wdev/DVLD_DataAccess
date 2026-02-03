@@ -137,7 +137,7 @@ namespace DVLD_DataAccess
             return IsFound;
         }
 
-        public static bool FindPersonByPersonID(string NationalNo, ref int PersonID, ref string FirstName, ref string SecondName,
+        public static bool FindPersonByNationalNo(string NationalNo, ref int PersonID, ref string FirstName, ref string SecondName,
             ref string ThirdName, ref string LastName, ref DateTime DateOfBirth,
             ref short Gendor, ref string Address, ref string Phone, ref string Email,
             ref int NationalityCountryID, ref string ImagePath)
@@ -363,10 +363,9 @@ namespace DVLD_DataAccess
             {
                 connection.Open();
                 SqlDataReader reader = Command.ExecuteReader();
-                while (reader.Read())
-                {
-                    Table.Load(reader);
-                }
+
+                Table.Load(reader);
+                reader.Close();
             }
             catch { }
             finally
