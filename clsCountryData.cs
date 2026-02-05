@@ -11,6 +11,30 @@ namespace DVLD_DataAccess
     public class clsCountryData
     {
 
+        public static string GetCountryName(int CountryID)
+        {
+            string CountryName = "";
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = "SELECT CountryName FROM Countries WHERE CountryID = @CountryID";
+            SqlCommand Command = new SqlCommand(Query, connection);
+            Command.Parameters.AddWithValue("@CountryID", CountryID);
+            try
+            {
+                connection.Open();
+                object result = Command.ExecuteScalar();
+                if (result != null)
+                {
+                    CountryName = result.ToString();
+                }
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return CountryName;
+        }
+
         public static DataTable GetAllCountries()
         {
             DataTable Table = new DataTable();
