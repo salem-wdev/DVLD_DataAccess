@@ -14,10 +14,10 @@ namespace DVLD_DataAccess
 {
     public class clsPersonData
     {
-        public static int AddNewPerson(ref string FirstName, ref string SecondName,
-            ref string ThirdName, ref string LastName, ref string NationalNo, ref DateTime DateOfBirth,
-            ref short Gender, ref string Address, ref string Phone, ref string Email,
-            ref int NationalityCountryID, ref string ImagePath)
+        public static int AddNewPerson( string FirstName,  string SecondName,
+             string ThirdName,  string LastName,  string NationalNo,  DateTime DateOfBirth,
+             short Gender,  string Address,  string Phone,  string Email,
+             int NationalityCountryID,  string ImagePath)
         {
 
             int PersonID = -1;
