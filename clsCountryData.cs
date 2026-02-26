@@ -15,7 +15,7 @@ namespace DVLD_DataAccess
         {
            bool IsFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string Query = "SELECT CountryName FROM Countries WHERE CountryID = @CountryID";
+            string Query = "SELECT * FROM Countries WHERE CountryID = @CountryID";
             SqlCommand Command = new SqlCommand(Query, connection);
             Command.Parameters.AddWithValue("@CountryID", CountryID);
             try
@@ -41,7 +41,7 @@ namespace DVLD_DataAccess
         {
            bool IsFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string Query = "SELECT CountryID FROM Countries WHERE CountryName = @CountryName";
+            string Query = "SELECT * FROM Countries WHERE CountryName = @CountryName";
             SqlCommand Command = new SqlCommand(Query, connection);
             Command.Parameters.AddWithValue("@CountryName", CountryName);
             try
