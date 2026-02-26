@@ -334,7 +334,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string Query = "SELECT PersonID  FROM People" +
+            string Query = "SELECT Found=1  FROM People" +
                 " WHERE PersonID = @PersonID";
 
             SqlCommand command = new SqlCommand(Query, connection);
@@ -369,7 +369,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string Query = "SELECT NationalNo FROM People" +
+            string Query = "SELECT Found=1 FROM People" +
                 " WHERE NationalNo = @NationalNo";
 
             SqlCommand command = new SqlCommand(Query, connection);

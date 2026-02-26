@@ -11,9 +11,9 @@ namespace DVLD_DataAccess
     public class clsCountryData
     {
 
-        public static string GetCountryName(int CountryID)
+        public static bool GetCountryByID(int CountryID, ref string CountryName)
         {
-            string CountryName = "";
+           bool IsFound = false;
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string Query = "SELECT CountryName FROM Countries WHERE CountryID = @CountryID";
             SqlCommand Command = new SqlCommand(Query, connection);
@@ -21,19 +21,48 @@ namespace DVLD_DataAccess
             try
             {
                 connection.Open();
-                object result = Command.ExecuteScalar();
-                if (result != null)
+                SqlDataReader reader = Command.ExecuteReader();
+                if (reader.Read())
                 {
-                    CountryName = result.ToString();
+                    CountryName = reader["CountryName"].ToString();
+                    IsFound = true;
                 }
+                reader.Close();
             }
             catch { }
             finally
             {
                 connection.Close();
             }
-            return CountryName;
+            return IsFound;
         }
+
+        public static bool GetCountryByCountryName(string CountryName, ref int CountryID)
+        {
+           bool IsFound = false;
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string Query = "SELECT CountryID FROM Countries WHERE CountryName = @CountryName";
+            SqlCommand Command = new SqlCommand(Query, connection);
+            Command.Parameters.AddWithValue("@CountryName", CountryName);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = Command.ExecuteReader();
+                if (reader.Read())
+                {
+                    CountryID = (int)reader["CountryID"];
+                    IsFound = true;
+                }
+                reader.Close();
+            }
+            catch { }
+            finally
+            {
+                connection.Close();
+            }
+            return IsFound;
+        }
+
 
         public static DataTable GetAllCountries()
         {
