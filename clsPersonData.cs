@@ -76,7 +76,7 @@ namespace DVLD_DataAccess
 
         }
 
-        public static bool FindPersonByPersonID(int PersonID, ref string NationalNo, ref string FirstName, ref string SecondName,
+        public static bool GetPersonInfoByID(int PersonID, ref string NationalNo, ref string FirstName, ref string SecondName,
             ref string ThirdName, ref string LastName, ref DateTime DateOfBirth,
             ref short Gender, ref string Address, ref string Phone, ref string Email,
             ref int NationalityCountryID, ref string ImagePath)
