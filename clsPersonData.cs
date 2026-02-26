@@ -82,9 +82,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string Query = "SELECT PersonID, NationalNo ,FirstName ,SecondName ,ThirdName ,LastName " +
-                ",DateOfBirth ,Gendor ,Address ,Phone ,Email ,NationalityCountryID ,ImagePath" +
-                " FROM People  WHERE NationalNo = @NationalNo;";
+            string Query = "SELECT * FROM People  WHERE PersonID = @PersonID;";
 
             SqlCommand command = new SqlCommand(Query, connection);
             command.Parameters.AddWithValue("@NationalNo", NationalNo);
