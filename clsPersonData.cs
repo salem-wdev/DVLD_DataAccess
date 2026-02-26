@@ -103,7 +103,14 @@ namespace DVLD_DataAccess
                     PersonID = Convert.ToInt32(reader["PersonID"]);
                     FirstName = reader["FirstName"].ToString();
                     SecondName = reader["SecondName"].ToString();
-                    ThirdName = reader["ThirdName"].ToString();
+                    if (reader["ThirdName"] == DBNull.Value)
+                    {
+                        ThirdName = string.Empty;
+                    }
+                    else
+                    {
+                        ThirdName = reader["ThirdName"].ToString();
+                    }
                     LastName = reader["LastName"].ToString();
                     DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
                     Gender = Convert.ToInt16(reader["Gendor"]);
