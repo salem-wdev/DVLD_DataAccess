@@ -65,7 +65,6 @@ namespace DVLD_DataAccess
                         Email = reader["Email"].ToString();
                     }
 
-                    Email = reader["Email"].ToString();
                     NationalityCountryID = Convert.ToInt32(reader["NationalityCountryID"]);
 
                     //ImagePath: allows null, we should handle null value
@@ -119,6 +118,8 @@ namespace DVLD_DataAccess
                     PersonID = Convert.ToInt32(reader["PersonID"]);
                     FirstName = reader["FirstName"].ToString();
                     SecondName = reader["SecondName"].ToString();
+
+                    //ThirdName: allows null, we should handle null value
                     if (reader["ThirdName"] == DBNull.Value)
                     {
                         ThirdName = string.Empty;
@@ -127,13 +128,26 @@ namespace DVLD_DataAccess
                     {
                         ThirdName = reader["ThirdName"].ToString();
                     }
+
                     LastName = reader["LastName"].ToString();
                     DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]);
                     Gender = Convert.ToInt16(reader["Gendor"]);
                     Address = reader["Address"].ToString();
                     Phone = reader["Phone"].ToString();
-                    Email = reader["Email"].ToString();
+
+                    //Email: allows null, we should handle null value
+                    if (reader["Email"] == DBNull.Value)
+                    {
+                        Email = string.Empty;
+                    }
+                    else
+                    {
+                        Email = reader["Email"].ToString();
+                    }
+
                     NationalityCountryID = Convert.ToInt32(reader["NationalityCountryID"]);
+
+                    //ImagePath: allows null, we should handle null value
                     if (reader["ImagePath"].ToString() == string.Empty)
                     {
                         ImagePath = string.Empty;
