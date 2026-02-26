@@ -260,7 +260,7 @@ namespace DVLD_DataAccess
             short Gender, string Address, string Phone, string Email,
             int NationalityCountryID, string ImagePath)
         {
-            int NumberOfEffectedRows =0;
+            int NumberOfEffectedRows = 0;
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
@@ -429,9 +429,20 @@ namespace DVLD_DataAccess
         {
             DataTable Table = new DataTable();
 
+
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string Query = "SELECT * FROM People";
+            string Query = "SELECT People.PersonID, People.NationalNo, People.FirstName, People.SecondName, " +
+                "People.ThirdName, People.LastName, People.DateOfBirth, " +
+                "CASE      " +
+                "WHEN People.Gendor = 0 THEN 'Male'   " +
+                "  ELSE 'Female' END AS GendorCaption, " +
+                "People.Address, People.Phone, People.Email," +
+                "Countries.CountryName, People.ImagePath " +
+                "FROM  People " +
+                "INNER JOIN  " +
+                "Countries  ON People.NationalityCountryID = Countries.CountryID " +
+                "ORDER BY  People.FirstName;";
 
             SqlCommand Command = new SqlCommand(Query, connection);
 
