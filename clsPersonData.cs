@@ -275,13 +275,31 @@ namespace DVLD_DataAccess
             Command.Parameters.AddWithValue("@NationalNo", NationalNo);
             Command.Parameters.AddWithValue("@FirstName", FirstName);
             Command.Parameters.AddWithValue("@SecondName", SecondName);
-            Command.Parameters.AddWithValue("@ThirdName", ThirdName);
+
+            if(string.IsNullOrEmpty(ThirdName))
+            {
+                Command.Parameters.AddWithValue("@ThirdName", DBNull.Value);
+            }
+            else
+            {
+                Command.Parameters.AddWithValue("@ThirdName", ThirdName);
+            }
+
             Command.Parameters.AddWithValue("@LastName", LastName);
             Command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
             Command.Parameters.AddWithValue("@Gendor", Gender);
             Command.Parameters.AddWithValue("@Address", Address);
             Command.Parameters.AddWithValue("@Phone", Phone);
-            Command.Parameters.AddWithValue("@Email", Email);
+
+            if (string.IsNullOrEmpty(Email))
+            {
+                Command.Parameters.AddWithValue("@Email", DBNull.Value);
+            }
+            else
+            {
+                Command.Parameters.AddWithValue("@Email", Email);
+            }
+
             Command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
 
             if (string.IsNullOrEmpty(ImagePath))
