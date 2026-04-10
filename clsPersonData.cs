@@ -104,7 +104,7 @@ namespace DVLD_DataAccess
 
             SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
-            string Query = "SELECT * FROM People  WHERE PersonID = @PersonID;";
+            string Query = "SELECT * FROM People  WHERE NationalNo = @NationalNo;";
 
             SqlCommand command = new SqlCommand(Query, connection);
             command.Parameters.AddWithValue("@NationalNo", NationalNo);
