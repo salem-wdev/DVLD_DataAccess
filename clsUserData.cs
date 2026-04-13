@@ -10,7 +10,7 @@ namespace DVLD_DataAccess
 {
     public class clsUserData
     {
-        public static bool GetUserInfoByID(int UserID, ref int PersonID, ref string UserName, 
+        public static bool GetUserInfoByUserID(int UserID, ref int PersonID, ref string UserName, 
             ref string Password, ref bool IsActive)
         {
             bool IsFound = false;
